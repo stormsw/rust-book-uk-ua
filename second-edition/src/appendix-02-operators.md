@@ -1,16 +1,16 @@
-## Operators
+## Оператори
 
-### Unary operator expressions
+### Унарні оператори
 
-Rust defines the following unary operators. They are all written as prefix
-operators, before the expression they apply to.
+Rust визначає наступні унарні оператори. Вони всі записані як префіксні оператори
+перед виразом до якого вони застосовуються.
 
 * `-`
-  : Negation. Signed integer types and floating-point types support negation. It
-    is an error to apply negation to unsigned types; for example, the compiler
-    rejects `-1u32`.
+  : Знакова інверсія. Знакові цілі типи та типи з плаваючою комою підтримують опертор '-'.
+    Використання інверсії знака для беззнакових типів є помилкою: наприклад компілятор відхилить `-1u32`.
 * `*`
-  : Dereference. When applied to a pointer, it denotes the pointed-to location.
+  : Розіменування. Коли застосовано до вказівника, він позначає данні за посиланням.
+    Для вказівника на несталі локації, результуюче значення можна змінювати також.
     For pointers to mutable locations, the resulting value can be assigned to.
     On non-pointer types, it calls the `deref` method of the `std::ops::Deref`
     trait, or the `deref_mut` method of the `std::ops::DerefMut` trait (if
@@ -18,16 +18,14 @@ operators, before the expression they apply to.
     could mutate the dereference), and produces the result of dereferencing the
     `&` or `&mut` borrowed pointer returned from the overload method.
 * `!`
-  : Logical negation. On the boolean type, this flips between `true` and
-    `false`. On integer types, this inverts the individual bits in the
-    two's complement representation of the value.
-* `&` and `&mut`
-  : Borrowing. When applied to a value, these operators produce a
-    reference (pointer) to that value. The value is also placed into
-    a borrowed state for the duration of the reference. For a shared
-    borrow (`&`), this implies that the value may not be mutated, but
-    it may be read or shared again. For a mutable borrow (`&mut`), the
-    value may not be accessed in any way until the borrow expires.
+  : Логічне заперечення. Для булевого типу він переключає `true` та `false`.
+    Для цілочисельних типів він інвертує побітово у форму другого комплементу значення. 
+* `&` та `&mut`
+  : Позичання. Коли застосовано до значення то ці оператори дають посилання на це значення.
+    Значення також встановлюється в позичений стан на період посилання. 
+    Для спільних позичань (`&`), це призводить що значення не можна змінити, 
+    але його можна читати та позичати. Для несталих позичань (`&mut`), до значення не можливо 
+    звернутись жодним способом аж доки термін позичання не сплине.
 
 ### Binary operator expressions
 
